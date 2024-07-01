@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Yetkili Giriş</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <style>
+        .form-signin {
+            max-width: 640px;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <main class="form-signin m-auto my-lg-5">
+        @using (Html.BeginForm("Index", "Yetkili", FormMethod.Post))
+        {
+
+            <h1 class="h3 mb-3 fw-normal">AOS Görüş Öneri Sistemi Yetkili Girişi</h1>
+            <div class="form-floating my-4">
+                <input type="text" class="form-control" id="floatingName" name="ad" placeholder="ad" />
+                <label for="floatingName">Kullanıcı Adı</label>
+            </div>
+
+            <div class="form-floating my-4">
+                <input type="password" class="form-control" id="floatingPassword" name="parola" placeholder="password" />
+                <label for="floatingPassword">Parolanız</label>
+            </div>
+            <div class="form-floating my-4">
+                <div class="g-recaptcha" data-sitekey="6Ld5FAQqAAAAANhuL6nt-Qpw5UkGo8npTToftVS3"></div>
+            </div>
+
+            <button class="btn btn-outline-primary  w-100 py-2" type="submit">Giriş Yap</button>
+            if (ViewBag.hataMesaj != null)
+            {
+                <div class="alert alert-danger mt-3" role="alert">
+                    @ViewBag.hataMesaj
+                </div>
+            }
+            
+        }
+    </main>
+</body>
+</html>

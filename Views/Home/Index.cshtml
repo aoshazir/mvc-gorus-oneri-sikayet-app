@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AOS Görüş Öneri Sistemi</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container my-5"> 
+        <div class="p-5 text-center bg-body-tertiary rounded-3">
+            <h1 class="text-body-emphasis">AOS Görüş Öneri Sistemi</h1>
+             <p class="col-lg-8 mx-auto fs-5 text-muted">
+                 Birimler için görüş öneri bildirmek amacıyla sisteme üye olunuz 
+             </p>
+             <div class="d-inline-flex gap-2 mb-5">
+                 @Html.ActionLink("Üye Ol", "Index", "Signup", null, new { @class = "btn btn-primary btn-lg rounded-pill" })
+                 @Html.ActionLink("Giriş Yap", "Login", "Signup", null, new { @class = "btn btn-outline-secondary btn-lg rounded-pill" })
+             </div>
+            <p>
+                @Html.ActionLink("Yetkili Giriş","Index","Yetkili",null,new { @class = "btn btn-dark btn-lg rounded-pill" })
+            </p>
+        </div>
+    </div>
+</body>
+</html>

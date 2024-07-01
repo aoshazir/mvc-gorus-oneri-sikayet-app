@@ -1,0 +1,63 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Üye Ol</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .form-signup{
+            max-width:640px;
+            padding:1rem;
+        }
+    </style>
+</head>
+<body>
+    <main class="form-signup m-auto my-lg-5">
+        @using (Html.BeginForm("Index", "Signup", FormMethod.Post))
+        {
+            <h1 class="h3 mb-3 fw-normal">AOS Görüş Öneri Sistemi Üyelik Oluştur</h1>
+            <div class="form-floating my-4">
+                <input type="email" class="form-control" id="floatingEmail" name="email" placeholder="name@example.com" required />
+                <label for="floatingEmail">Email Adresiniz</label>
+            </div>
+
+            <div class="form-floating my-4">
+                <input type="password" class="form-control" id="floatingPassword" name="parola" placeholder="password" required />
+                <label for="floatingPassword">Parolanız</label>
+            </div>
+
+            <div class="form-floating my-4">
+                <input type="password" class="form-control" id="floatingPasswordControl" name="parolaTekrar" placeholder="password" required />
+                <label for="floatingPasswordControl">Parola Tekrarınız</label>
+            </div>
+
+            <div class="form-floating my-4">
+                <div class="row">
+                    <div class="col-4 border border-danger rounded-2">
+                        <img src="@ViewBag.resim" />
+                    </div>
+                    <div class="col-8">
+                        <input type="text" class="form-control" name="guvenlikKod" placeholder="Güvenlik Kodunu Giriniz" required />
+                    </div>
+                </div>
+            </div><button class="btn btn-primary w-100 py-2" type="submit">Üye Ol</button>
+            if (ViewBag.hataMesaj != null)
+            {
+                <div class="alert alert-danger mt-3" role="alert">
+                    @ViewBag.hataMesaj
+                </div>
+            }
+
+            <p class="mt-5 mb-3 text-body-secondary">
+                @Html.ActionLink("Zaten üyeyseniz giriş sayfası için tıklayınız", "Login", "Signup")
+            </p>
+        }
+    </main>
+</body>
+</html>

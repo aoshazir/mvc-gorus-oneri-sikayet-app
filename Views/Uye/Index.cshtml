@@ -1,0 +1,64 @@
+﻿@model MVCGorusOneriSistemiApp.Models.Uyeler
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUye.cshtml";
+}
+
+<div class="modal fade" tabindex="-1" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Kişisel Sayfanız</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Kişisel Sayfanız Güncellendi</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_PartialKarsilama")
+
+<div>
+    @using (Html.BeginForm("Index", "Uye"))
+    {
+        <div class="mb-3">
+            <label for="email" class="form-label">Email Adresiniz</label>
+            <input type="email" id="email" value="@Model.uyeEmail" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label for="adsoyad" class="form-label">Ad Soyad</label>
+            <input type="text" id="adsoyad" value="@Model.uyeAdSoyad" class="form-control" name="adsoyad" placeholder="Ad Soyad alanı boş ise talep oluşturamazsınız" />
+        </div>
+        <div class="mb-3">
+            <label for="telefon" class="form-label">Telefon</label>
+            <input type="text" id="telefon" value="@Model.uyeTelefon" class="form-control" name="telefon" />
+        </div>
+        <button type="submit" class="btn btn-success">Güncelle</button>
+    }
+</div>
+
+
+@if (ViewBag.guncellendi != false)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            OpenBootstrapPopup();
+        };
+        function OpenBootstrapPopup() {
+            $("#myModal").modal('show');
+        }
+
+
+    </script>
+
+}
+
+
+
+
+

@@ -1,0 +1,45 @@
+﻿@model MVCGorusOneriSistemiApp.Models.Talepler
+
+@{
+    ViewBag.Title = "Detay";
+    Layout = "~/Views/Shared/_LayoutYekili.cshtml";
+}
+
+<h2>Detay</h2>
+<h2>Talep Detayınız</h2>
+@using (Html.BeginForm("Detay", "Yetkili",FormMethod.Post))
+{
+    <input type="hidden" name="id" value="@Model.talepId" />
+    <div class="mb-3">
+        <label for="baslik" class="form-label">Başlık:</label>
+        <input type="text" class="form-control" id="baslik" name="baslik" disabled value="@Model.talepBaslik" />
+    </div>
+    <div class="mb-3">
+        <label for="mesaj" class="form-label">Mesaj:</label>
+        <input type="text" class="form-control" id="mesaj" name="mesaj" disabled value="@Model.talepMesaj" />
+    </div>
+
+    <div class="mb-5 row">
+        <div class="col-md-6 col-sm-12">
+            <label for="birim" class="form-label">Birimi</label>
+            <input type="text" class="form-control" id="birim" name="birim" disabled value="@Model.Birimler.birimAd" />
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <label for="durum" class="form-label">Durumu</label>
+            <input type="text" class="form-control" id="durum" name="durum" disabled value="@Model.Durumlar.durumAd" />
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="cevap" class="form-label">Cevap:</label>
+        <input type="text" class="form-control" id="cevap" name="cevap" value="@Model.talepCevap" />
+    </div>
+    <button class="btn btn-primary w-100 py-2" type="submit">Cevapla</button>
+}
+
+
+
+
+
+
+

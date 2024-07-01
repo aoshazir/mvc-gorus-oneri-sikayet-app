@@ -1,0 +1,20 @@
+﻿@model IEnumerable<MVCGorusOneriSistemiApp.Models.Talepler>
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Talepler";
+    Layout = "~/Views/Shared/_LayoutUye.cshtml";
+}
+
+@Html.Partial("_PartialKarsilama")
+
+<h2>Taleplerim</h2>
+
+@Html.Grid(Model).Columns(column =>
+{
+    column.Add(m => m.talepBaslik).Titled("Başlık");
+    column.Add(m => m.Durumlar.durumAd).Titled("Durumu");
+    column.Add(m => m.Birimler.birimAd).Titled("Birimi");
+    column.Add(m => m.Tipler.tipAd).Titled("Tipi");
+    column.Add().Encoded(false).Sanitized(false).SetWidth(30).RenderValueAs(o => Html.ActionLink("Detay", "Detay", "Uye", new { id = o.talepId }, new { @class = "btn btn-dark btn-sm" }));
+}).WithPaging(7)
+

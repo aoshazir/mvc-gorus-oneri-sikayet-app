@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MVCGorusOneriSistemiApp.Models.YetkiTalepler>
+
+@{
+    ViewBag.Title = "Cevaplanan";
+    Layout = "~/Views/Shared/_LayoutYekili.cshtml";
+}
+
+<h2>Cevaplanan</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.talepBaslik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.olusturulmaTarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.birimAd)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.talepBaslik)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.olusturulmaTarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.birimAd)
+        </td>
+       
+    </tr>
+}
+
+</table>

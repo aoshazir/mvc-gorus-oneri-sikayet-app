@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "TalepOlustur";
+    Layout = "~/Views/Shared/_LayoutUye.cshtml";
+}
+
+
+@Html.Partial("_PartialKarsilama")
+
+@using (Html.BeginForm("TalepOlustur", "Uye"))
+{
+
+
+    <h3>Lütfen Talebinizi Oluşturunuz</h3>
+    <div class="mb-3">
+        <label for="baslik" class="form-label">Başlık:</label>
+        <input type="text" class="form-control" id="baslik" name="baslik" required />
+    </div>
+    <div class="mb-3">
+        <label for="mesaj" class="form-label">Mesaj:</label>
+        <input type="text" class="form-control" id="mesaj" name="mesaj" required />
+    </div>
+    <div class="mb-5 row">
+        <div class="col-md-6 col-sm-12">
+            <label for="birim" class="form-label">Birim</label>
+            <select class="form-select" id="birim" name="birim">
+                @foreach (var birim in ViewBag.birimler)
+                {
+                    <option value="@birim.birimId">@birim.birimAd</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <label for="tip" class="form-label">Tip</label>
+            <select class="form-select" id="tip" name="tip">
+                @foreach (var tip in ViewBag.tipler)
+                {
+                    <option value="@tip.tipId">@tip.tipAd</option>
+                }
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-dark">Oluştur</button>
+
+    if (ViewBag.hataMesaj != null)
+    {
+        <div class="alert alert-danger mt-3" role="alert">
+            @ViewBag.hataMesaj
+        </div>
+    }
+
+    if (ViewBag.basariliMesaj != null)
+    {
+        <div class="alert alert-success mt-3" role="alert">
+            @ViewBag.basariliMesaj
+        </div>
+    }
+}
+
+
+@if (ViewBag.basariliMesaj != null)
+{
+    <script>
+        setTimeout(() => {
+            window.location.href="Talepler"
+        },3000)
+    </script>
+}
